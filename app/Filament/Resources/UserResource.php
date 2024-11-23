@@ -30,16 +30,13 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at')
-                    ->label('Email Verified At'),
+                Forms\Components\DateTimePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('status')
-                    ->required()
-                    ->options(['User', 'Admin'])
-                    ->default('User'),
+                Forms\Components\Toggle::make('is_admin')
+                    ->required(),
             ]);
     }
 
@@ -52,11 +49,10 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email_verified_at')
-                    ->label('Email Verified At')
                     ->dateTime()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->sortable(),
+                Tables\Columns\IconColumn::make('is_admin')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()
@@ -73,6 +69,7 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

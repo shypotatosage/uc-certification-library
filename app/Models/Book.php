@@ -10,17 +10,21 @@ class Book extends Model
     use HasFactory;
 
     protected $fillable = [
-        "answer_content",
-        "question_id",
-        "user_id",
+        "book_cover",
+        "name",
+        "description",
+        "primary_author",
+        "publisher",
+        "published_year",
+        "loanee_id",
         "status"
     ];
     
     public function categories(){
         return $this->belongsToMany(Category::class, 'book_categories', 'book_id', 'category_id');
     }
-
-    public function book_loans(){
-        return $this->hasMany(BookLoan::class);
+    
+    public function loanee(){
+        return $this->belongsTo(User::class, 'loanee_id');
     }
 }

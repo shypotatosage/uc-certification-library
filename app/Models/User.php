@@ -22,6 +22,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'is_admin',
     ];
 
     /**
@@ -47,12 +48,12 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
-    public function book_loans(){
-        return $this->hasMany(BookLoan::class);
+    public function books() {
+        return $this->hasMany(Book::class);
     }
  
-    public function canAccessPanel(Panel $panel): bool
+    public function canAccessAdminPanel(Panel $panel): bool
     {
-        return $this->status == "Admin";
+        return $this->is_admin == 1;
     }
 }

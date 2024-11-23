@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 
-Route::get('/', [BookController::class, 'index']);
+Route::get('/', [BookController::class, 'displayBooks']);
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

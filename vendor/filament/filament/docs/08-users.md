@@ -23,14 +23,14 @@ class User extends Authenticatable implements FilamentUser
 {
     // ...
 
-    public function canAccessPanel(Panel $panel): bool
+    public function canAccessAdminPanel(Panel $panel): bool
     {
         return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
     }
 }
 ```
 
-The `canAccessPanel()` method returns `true` or `false` depending on whether the user is allowed to access the `$panel`. In this example, we check if the user's email ends with `@yourdomain.com` and if they have verified their email address.
+The `canAccessAdminPanel()` method returns `true` or `false` depending on whether the user is allowed to access the `$panel`. In this example, we check if the user's email ends with `@yourdomain.com` and if they have verified their email address.
 
 Since you have access to the current `$panel`, you can write conditional checks for separate panels. For example, only restricting access to the admin panel while allowing all users to access the other panels of your app:
 
@@ -47,7 +47,7 @@ class User extends Authenticatable implements FilamentUser
 {
     // ...
 
-    public function canAccessPanel(Panel $panel): bool
+    public function canAccessAdminPanel(Panel $panel): bool
     {
         if ($panel->getId() === 'admin') {
             return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();

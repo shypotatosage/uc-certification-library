@@ -68,7 +68,7 @@ class Login extends SimplePage
 
         if (
             ($user instanceof FilamentUser) &&
-            (! $user->canAccessPanel(Filament::getCurrentPanel()))
+            (! $user->canAccessAdminPanel(Filament::getCurrentPanel()))
         ) {
             Filament::auth()->logout();
 

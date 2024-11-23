@@ -4,6 +4,6 @@
 
 @section('content')
     <div class="container mx-auto md:p-6 pt-6">
-        
+        <div></div>
     </div>
 @endsection

@@ -10,11 +10,11 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function displayBooks()
     {
         $books = Book::all();
 
-        return view('welcome', [     
+        return view('home', [     
             'title'=>'Books',
             'books' => $books
         ]);

@@ -25,10 +25,5 @@ class DatabaseSeeder extends Seeder
         foreach ($books as $book) {
             BookCategory::factory()->count(2)->create(['book_id' => $book->id]);
         }
-    
-        // Create book loans
-        foreach ($books as $book) {
-            BookLoan::factory()->count(2)->create(['book_id' => $book->id]);
-        }
     }
 }
