@@ -14,11 +14,9 @@ class BookController extends Controller
     {
         $books = Book::all();
 
-        return view('editarticle', [     
-            'title'=>'Edit Artikel',
-            'maintitle'=>'Edit Artikel',
-            'user'=>auth()->user(),
-            'article' => Article::findOrFail($id)
+        return view('welcome', [     
+            'title'=>'Books',
+            'books' => $books
         ]);
     }
 

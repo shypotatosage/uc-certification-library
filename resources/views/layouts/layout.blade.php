@@ -5,8 +5,12 @@
         <title>
             @yield('title')
         </title>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
-    <body style="background-color: #FAFAFA;">
+    <body class="bg-white text-black dark:bg-gray-900 dark:text-white">
+        @include('layouts.navigation')
+
+        @yield('content')
     </body>
 </html>
