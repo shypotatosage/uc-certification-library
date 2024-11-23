@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('book_cover');
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->string('primary_author');
             $table->string('publisher');
             $table->string('published_year');
